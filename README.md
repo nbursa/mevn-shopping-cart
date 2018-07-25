@@ -13,6 +13,8 @@ npm install
 
 # serve at localhost:3000
 npm run start
+
+# hit localhost:3000/seeder url to populate db
 ```
 
 ## 2. Shop build Setup
