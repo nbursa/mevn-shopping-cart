@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -15,8 +15,11 @@ const stripe = require("stripe")('PRIVT_KEY');
 const app = express();
 
 //Set up default mongoose connection
-const mongoDB = 'mongodb://127.0.0.1/vueexpress';
-mongoose.connect(mongoDB);
+const mongoDB = 'mongodb://localhost:27017/local_db';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connection.once('open', () => {
+  console.log(`Connected to ${mongoDB}`)
+})
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
 //Get the default connection
